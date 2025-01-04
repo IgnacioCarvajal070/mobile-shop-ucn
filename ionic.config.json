@@ -1,0 +1,7 @@
+{
+  "name": "mobile-shop-ucn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
