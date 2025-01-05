@@ -14,20 +14,47 @@ import { UpperBarComponent } from "../components/upper-bar/upper-bar.component";
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule, UpperBarComponent]
 })
+/**
+ * Clase para la pagina de inicio de sesion de usuario.
+ */
 export class UserLoginPage {
 
+  // Formulario de inicio de sesion.
   form!: FormGroup;
+
+  // Bandera para mostrar alerta de inicio de sesion.
   loginAlert: boolean = false;
+
+  // Bandera para mostrar error en el inicio de sesion.
   error: boolean = false;
+
+  // Correo electronico del usuario.
   email: string = '';
+
+  // Contraseña del usuario.
   password: string = '';
+
+  // Mensaje de error en el inicio de sesion.
   errorMessage: string = '';
+  
+  // Servicio para interactuar con la API de autenticacion.
   private authService = inject(ApiServiceService);
+
+  // Servicio para interactuar con el almacenamiento local.
   private localStorageService = inject(LocalStorageService);
+
+  /**
+   * Constructor de la pagina.
+   * @param fb - Constructor de formularios.
+   * @param router - Enrutador de la pagina.
+   */
   constructor(private fb: FormBuilder, private router: Router) { 
     this.formulario();
   }
 
+  /**
+   * Metodo para inicializar el formulario.
+   */
   formulario() {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,12 +62,22 @@ export class UserLoginPage {
     });
   }
 
+  /**
+   * Metodo validador del campo de correo electronico en el formulario.
+   */
   get emailValidate(){
     return this.form.get('email')?.invalid && this.form.get('email')?.touched;
   }
+  /**
+   * Metodo validador del campo de contraseña en el formulario.
+   */
   get passwordValidate(){
     return this.form.get('password')?.invalid && this.form.get('password')?.touched;
   }
+
+  /**
+   * Metodo para iniciar sesion en la aplicacion.
+   */
   async login() {
     if(this.form.invalid){
       return Object.values(this.form.controls).forEach(control => {
