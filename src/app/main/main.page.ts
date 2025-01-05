@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 import { ApiProductService } from '../Services/api-product.service';
 import { Router, RouterModule } from '@angular/router';
+import { ApiShoppingCartService } from '../Services/api-shopping-cart.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -21,7 +23,7 @@ export class MainPage implements OnInit {
   searchTerm = '';
   order = '';
 
-  constructor (private productService: ApiProductService, private router: Router) { }
+  constructor (private productService: ApiProductService, private router: Router, private shoppingCartService: ApiShoppingCartService, private localStorage: LocalStorageService) { }
   ngOnInit(): void {
     this.loadProducts();
   }
@@ -61,10 +63,16 @@ export class MainPage implements OnInit {
     this.loadProducts();
   }
 
+  async addProductToCart(productId: number){
+    await this.shoppingCartService.addProductToCart(this.localStorage.getVariable('user').id, productId, 1);
+  }
   navigateToUserPage(){
     this.router.navigate(['/user-page']);
   }
   navigateToShopHistory(){
     this.router.navigate(['/shop-history']);
+  }
+  navigeteToShoppingCart(){
+    this.router.navigate(['/shopping-cart']);
   }
 }

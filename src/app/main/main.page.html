@@ -8,6 +8,11 @@
         <img src="assets/icon/historialCompra.png" alt="HistorialCompras" style="width: 24px; height: 24px;" />
       </ion-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigeteToShoppingCart()">
+        <img src="assets/icon/CarritoCompra.png" alt="Carrito" style="width: 24px; height: 24px;" />
+      </ion-button>
+    </ion-buttons>
     <ion-title>Productos</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -51,6 +56,14 @@
         <p>{{ product.productType }}</p>
         <p><strong>Precio:</strong> ${{ product.price }}</p>
       </ion-label>
+      <ion-button 
+      slot="end" 
+      (click)="addProductToCart(product.id)" 
+      color="primary" 
+      fill="solid"
+    >
+      Agregar al carrito
+    </ion-button>
     </ion-item>
   </ion-list>
 

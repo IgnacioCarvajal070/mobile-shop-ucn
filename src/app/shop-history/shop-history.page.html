@@ -20,7 +20,7 @@
       <ion-card-content>
         <p><strong>Dirección de Envío:</strong></p>
         <p>{{ purchase.street }}, {{ purchase.commune }}, {{ purchase.city }}, {{ purchase.country }}</p>
-        <p><strong>Total de la compra:</strong> {{ purchase.totalPrice | currency }}</p>
+        <p><strong>Total de la compra:</strong> {{ purchase.totalPrice | currency:'CLP ':'symbol':'1.0-0' }}</p>
 
         <ion-label>Productos comprados:</ion-label>
         <ion-grid>
