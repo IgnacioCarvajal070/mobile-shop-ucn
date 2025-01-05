@@ -5,13 +5,14 @@ import { IonicModule } from '@ionic/angular';
 import { ApiServiceService } from '../Services/api-service.service';
 import { Router, RouterModule } from '@angular/router';
 import { LocalStorageService } from '../Services/local-storage.service';
+import { UpperBarComponent } from "../components/upper-bar/upper-bar.component";
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.page.html',
   styleUrls: ['./user-login.page.scss'],
   standalone: true,
-  imports: [IonicModule,CommonModule, FormsModule, ReactiveFormsModule,RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule, UpperBarComponent]
 })
 export class UserLoginPage {
 

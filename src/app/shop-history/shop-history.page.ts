@@ -6,13 +6,14 @@ import { Router, RouterModule } from '@angular/router';
 import { ApiPurchaseService } from '../Services/api-purchase.service';
 import { LocalStorageService } from '../Services/local-storage.service';
 import { ResponseAPIGetPurchases } from '../interfaces/purchase';
+import { UpperBathAuthComponent } from "../components/upper-bath-auth/upper-bath-auth.component";
 
 @Component({
   selector: 'app-shop-history',
   templateUrl: './shop-history.page.html',
   styleUrls: ['./shop-history.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule, UpperBathAuthComponent]
 })
 export class ShopHistoryPage implements OnInit {
   purchaseService = inject(ApiPurchaseService);
@@ -27,9 +28,5 @@ export class ShopHistoryPage implements OnInit {
   async getPurchases(){
     const purchases = await this.purchaseService.getPurchases(this.localStorage.getVariable('user').id);
     this.purchases = purchases;
-  }
-
-  async navigateToMain(){
-    this.router.navigate(['/main']);
   }
 }

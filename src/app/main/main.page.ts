@@ -8,12 +8,13 @@ import { ApiProductService } from '../Services/api-product.service';
 import { Router, RouterModule } from '@angular/router';
 import { ApiShoppingCartService } from '../Services/api-shopping-cart.service';
 import { LocalStorageService } from '../Services/local-storage.service';
+import { UpperBathAuthComponent } from "../components/upper-bath-auth/upper-bath-auth.component";
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule, RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule, RouterModule, UpperBathAuthComponent]
 })
 export class MainPage implements OnInit {
   
@@ -23,12 +24,12 @@ export class MainPage implements OnInit {
   searchTerm = '';
   order = '';
 
-  constructor (private productService: ApiProductService, private router: Router, private shoppingCartService: ApiShoppingCartService, private localStorage: LocalStorageService) { }
+  constructor (private productService: ApiProductService,private shoppingCartService: ApiShoppingCartService, private localStorage: LocalStorageService) { }
   ngOnInit(): void {
     this.loadProducts();
   }
   async loadProducts(){
-    this.productService.getProducts(this.searchTerm, this.order, this.currentPage, 3).then(response => {
+    this.productService.getProducts(this.searchTerm, this.order, this.currentPage, 10).then(response => {
       if (response.result.length > 0){
         this.products = response.result;
       }
@@ -56,7 +57,7 @@ export class MainPage implements OnInit {
     this.lastPage = 0;
     this.loadProducts();
   }
-  orderProducts(order: 'asc' | 'desc'){
+  orderProducts(order: 'asc' | 'desc' | ''){
     this.order = order;
     this.currentPage = 1;
     this.lastPage = 0;
@@ -65,14 +66,5 @@ export class MainPage implements OnInit {
 
   async addProductToCart(productId: number){
     await this.shoppingCartService.addProductToCart(this.localStorage.getVariable('user').id, productId, 1);
-  }
-  navigateToUserPage(){
-    this.router.navigate(['/user-page']);
-  }
-  navigateToShopHistory(){
-    this.router.navigate(['/shop-history']);
-  }
-  navigeteToShoppingCart(){
-    this.router.navigate(['/shopping-cart']);
   }
 }

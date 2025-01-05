@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../Services/local-storage.service';
 import { Product } from '../interfaces/product';
 import { ViewWillEnter } from '@ionic/angular';
+import { UpperBathAuthComponent } from "../components/upper-bath-auth/upper-bath-auth.component";
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.page.html',
   styleUrls: ['./shopping-cart.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, UpperBathAuthComponent]
 })
 export class ShoppingCartPage implements OnInit, ViewWillEnter {
   cart: ShoppingCart = {cartId: 0, userId: 0, cartItems: []};

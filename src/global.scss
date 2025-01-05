@@ -35,3 +35,17 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+.green-bar {
+    background-color: #31c48d;
+    --background: #31c48d;
+    padding: 10px;
+    text-align: center;
+  }
+
+.category-filter {
+  --background: black;
+  margin-bottom: 10px;
+  box-shadow: none;
+  color:black;
+  border-radius: 10px;
+}

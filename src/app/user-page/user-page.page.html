@@ -1,29 +1,24 @@
-<ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/main"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Perfil de Usuario</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div class="user-profile">
-    <h2>Información del Usuario</h2>
+<app-upper-bath-auth></app-upper-bath-auth>
+  <ion-content>
+  <div class="user-info">
+    <h2 class="card-title">Información del Usuario</h2>
     <p><strong>RUT:</strong> {{ userRut }}</p>
     <p><strong>Email:</strong> {{ userEmail }}</p>
     <p><strong>Nombre:</strong> {{ userName }}</p>
     <p><strong>Fecha de Nacimiento:</strong> {{ userBirthdate }}</p>
     <p><strong>Género:</strong> {{ userGender }}</p>
-  </div>
 
-  <div class="actions">
-    <h2>Acciones</h2>
-    <ion-button expand="block" color="primary" (click)="userLogout()">
-      Cerrar Sesión
-    </ion-button>
-    <ion-button expand="block" color="danger" (click)="userDelete()">
-      Eliminar Cuenta
-    </ion-button>
+
+    <div class="actions">
+      <h2>Acciones</h2>
+      <ion-button ion-button expand="block" color="primary" (click)="userLogout()"
+        style="font-weight: bold; text-transform: none;">
+        Cerrar Sesión
+      </ion-button>
+      <ion-button expand="block" color="danger" (click)="userDelete()"
+        style="font-weight: bold; text-transform: none;">
+        Eliminar Cuenta
+      </ion-button>
+    </div>
   </div>
 </ion-content>

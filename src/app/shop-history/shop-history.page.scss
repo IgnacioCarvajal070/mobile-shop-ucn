@@ -1,0 +1,38 @@
+.purchase-list {
+    padding: 16px;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    margin: 16px;
+    box-shadow: none;
+  }
+  
+  .purchase-card {
+    border-radius: 12px;
+    box-shadow: none;
+    margin-bottom: 16px;
+    background-color: white;
+  }
+  
+  .header-row {
+    background-color: #e3f2fd;
+    font-weight: bold;
+  }
+  
+  .no-purchases {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  ion-content {
+    --background: #e0f7fa;
+  }
+  ion-list{
+    --background: #e0f7fa;
+    background-color: #e0f7fa;
+    box-shadow: none;
+  }
+  ion-card-title{
+    color:#505050;
+    font-weight: bold;
+  }

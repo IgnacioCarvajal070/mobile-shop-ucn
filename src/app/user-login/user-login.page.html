@@ -1,3 +1,4 @@
+<app-upper-bar></app-upper-bar>
 <ion-content class="ion-padding">
 
   <ion-header>
@@ -21,7 +22,8 @@
         <p>{{ errorMessage }}</p>
       </ion-card-content>
     </ion-card>
-    <ion-button expand="block" type="submit" color="primary">
+    <ion-button expand="block" type="submit" color="primary"
+    style="font-weight: bold; text-transform: none;">
       Iniciar Sesión
     </ion-button>
     <ion-text color="danger" *ngIf="loginAlert">

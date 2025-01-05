@@ -1,25 +1,7 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="navigateToUserPage()">
-        <img src="assets/icon/usuario.png" alt="Usuario" style="width: 24px; height: 24px;" />
-      </ion-button>
-      <ion-button (click)="navigateToShopHistory()">
-        <img src="assets/icon/historialCompra.png" alt="HistorialCompras" style="width: 24px; height: 24px;" />
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="navigeteToShoppingCart()">
-        <img src="assets/icon/CarritoCompra.png" alt="Carrito" style="width: 24px; height: 24px;" />
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Productos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-upper-bath-auth></app-upper-bath-auth>
 <ion-content>
   <!-- Filtro por categoría -->
-  <ion-item>
+  <ion-item class ="category-item">
     <ion-label>Categoría</ion-label>
     <ion-select
       [(ngModel)]="searchTerm"
@@ -37,12 +19,30 @@
 
   <!-- Botones para ordenar productos -->
   <div class="sort-buttons">
-    <ion-button (click)="orderProducts('asc')" [fill]="order === 'asc' ? 'solid' : 'outline'">
-      Ordenar Ascendente
-    </ion-button>
-    <ion-button (click)="orderProducts('desc')" [fill]="order === 'desc' ? 'solid' : 'outline'">
-      Ordenar Descendente
-    </ion-button>
+    <ion-button 
+    (click)="orderProducts('asc')" 
+    [fill]="order === 'asc' ? 'solid' : 'outline'" 
+    [color]="order === 'asc' ? 'primary' : 'default'"
+    style="font-weight: bold; text-transform: none;">
+    Ordenar Ascendente
+  </ion-button>
+  
+  <ion-button 
+    (click)="orderProducts('desc')" 
+    [fill]="order === 'desc' ? 'solid' : 'outline'" 
+    [color]="order === 'desc' ? 'primary' : 'default'"
+    style="font-weight: bold; text-transform: none;">
+    
+    Ordenar Descendente
+  </ion-button>
+  
+  <ion-button 
+    (click)="orderProducts('')" 
+    [fill]="order === '' ? 'solid' : 'outline'" 
+    [color]="order === '' ? 'primary' : 'default'"
+    style="font-weight: bold; text-transform: none;">
+    Por defecto
+  </ion-button>
   </div>
 
   <!-- Lista de productos -->
@@ -59,17 +59,17 @@
       <ion-button 
       slot="end" 
       (click)="addProductToCart(product.id)" 
-      color="primary" 
+      style="--background: #48bb78; color: white; font-weight: bold; text-transform: none;" 
       fill="solid"
     >
-      Agregar al carrito
+      Añadir al carrito
     </ion-button>
     </ion-item>
   </ion-list>
 
   <!-- Paginación -->
-  <div class="pagination-buttons">  
-    <ion-button (click)="previousPage()" [disabled]="currentPage <= 1">Anterior</ion-button>
-    <ion-button (click)="nextPage()" [disabled]="currentPage == lastPage">Siguiente</ion-button>
+  <div class="sort-buttons">  
+    <ion-button (click)="previousPage()" [disabled]="currentPage <= 1" style="font-weight: bold; text-transform: none;">Anterior</ion-button>
+    <ion-button (click)="nextPage()" [disabled]="currentPage == lastPage" style="font-weight: bold; text-transform: none;">Siguiente</ion-button>
   </div>
 </ion-content>

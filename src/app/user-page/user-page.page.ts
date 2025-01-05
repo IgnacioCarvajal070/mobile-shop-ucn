@@ -6,13 +6,14 @@ import { ApiServiceService } from '../Services/api-service.service';
 import { LocalStorageService } from '../Services/local-storage.service';
 import { Router, RouterModule } from '@angular/router';
 import { Gender } from '../interfaces/userAuth';
+import { UpperBathAuthComponent } from "../components/upper-bath-auth/upper-bath-auth.component";
 
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.page.html',
   styleUrls: ['./user-page.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule, UpperBathAuthComponent]
 })
 export class UserPagePage implements OnInit {
   userService = inject(ApiServiceService);
