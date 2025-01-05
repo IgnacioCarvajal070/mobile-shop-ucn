@@ -52,7 +52,4 @@ export class UserPagePage implements OnInit {
     const parsedDate = new Date(date);
     return parsedDate.toISOString().split('T')[0];
   }
-  navigateToMain(){
-    this.router.navigate(['/main']);
-  }
 }

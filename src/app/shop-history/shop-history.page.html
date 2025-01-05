@@ -1,13 +1,51 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>ShopHistory</ion-title>
+    <ion-title>Historial de Compras</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ShopHistory</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list *ngIf="purchases.length > 0; else noPurchases">
+    <ion-card *ngFor="let purchase of purchases">
+      <ion-card-header>
+        <ion-card-title>Compra #{{ purchase.id }}</ion-card-title>
+        <ion-card-subtitle>
+          Fecha: {{ purchase.purchaseDate | date: 'shortDate' }}
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Dirección de Envío:</strong></p>
+        <p>{{ purchase.street }}, {{ purchase.commune }}, {{ purchase.city }}, {{ purchase.country }}</p>
+        <p><strong>Total de la compra:</strong> {{ purchase.totalPrice | currency }}</p>
+
+        <ion-label>Productos comprados:</ion-label>
+        <ion-grid>
+          <ion-row class="header-row">
+            <ion-col size="4"><strong>Producto</strong></ion-col>
+            <ion-col size="2"><strong>Tipo</strong></ion-col>
+            <ion-col size="2"><strong>Precio Unitario</strong></ion-col>
+            <ion-col size="2"><strong>Cantidad</strong></ion-col>
+            <ion-col size="2"><strong>Total</strong></ion-col>
+          </ion-row>
+          <ion-row *ngFor="let product of purchase.purchaseProducts">
+            <ion-col size="4">{{ product.productName }}</ion-col>
+            <ion-col size="2">{{ product.productType }}</ion-col>
+            <ion-col size="2">{{ product.price | currency:'CLP ':'symbol':'1.0-0' }}</ion-col>
+            <ion-col size="2">{{ product.quantity }}</ion-col>
+            <ion-col size="2">{{ product.totalPrice | currency:'CLP ':'symbol':'1.0-0' }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #noPurchases>
+    <ion-text color="medium">
+      <p class="ion-padding">No tienes compras registradas.</p>
+    </ion-text>
+  </ng-template>
 </ion-content>

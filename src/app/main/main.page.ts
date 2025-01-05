@@ -64,4 +64,7 @@ export class MainPage implements OnInit {
   navigateToUserPage(){
     this.router.navigate(['/user-page']);
   }
+  navigateToShopHistory(){
+    this.router.navigate(['/shop-history']);
+  }
 }

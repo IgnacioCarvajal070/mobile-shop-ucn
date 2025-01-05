@@ -10,6 +10,7 @@ export class ApiServiceService {
   private baseUrl = 'http://localhost:5252/api';
   public errors: string[] = [];
   constructor(private http: HttpClient) { }
+  
   async login(form: any): Promise<ResponseAPI>{
    try {
       this.errors = [];
