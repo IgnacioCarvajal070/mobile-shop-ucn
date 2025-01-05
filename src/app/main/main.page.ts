@@ -5,12 +5,13 @@ import { IonicModule} from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 import { ApiProductService } from '../Services/api-product.service';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
+  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule, RouterModule]
 })
 export class MainPage implements OnInit {
   
@@ -20,12 +21,12 @@ export class MainPage implements OnInit {
   searchTerm = '';
   order = '';
 
-  constructor (private productService: ApiProductService) { }
+  constructor (private productService: ApiProductService, private router: Router) { }
   ngOnInit(): void {
     this.loadProducts();
   }
   async loadProducts(){
-    this.productService.getProducts(this.searchTerm, this.order, this.currentPage, 10).then(response => {
+    this.productService.getProducts(this.searchTerm, this.order, this.currentPage, 3).then(response => {
       if (response.result.length > 0){
         this.products = response.result;
       }
@@ -58,5 +59,9 @@ export class MainPage implements OnInit {
     this.currentPage = 1;
     this.lastPage = 0;
     this.loadProducts();
+  }
+
+  navigateToUserPage(){
+    this.router.navigate(['/user-page']);
   }
 }

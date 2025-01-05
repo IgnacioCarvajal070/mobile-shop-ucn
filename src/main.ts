@@ -4,9 +4,10 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { jwtInterceptor } from './app/_interceptors/jwt.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -15,5 +16,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     importProvidersFrom(HttpClientModule),
     importProvidersFrom(ReactiveFormsModule),
+    provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
   ],
 });

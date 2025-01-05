@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>UserPage</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">UserPage</ion-title>
+      <ion-buttons slot="start">
+        <ion-button (click)="navigateToMain()">
+          <img src="assets/icon/CarritoCompra.png" alt="carritoCompra" style="width: 24px; height: 24px;" />
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Perfil de Usuario</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="user-profile">
+    <h2>Información del Usuario</h2>
+    <p><strong>RUT:</strong> {{ userRut }}</p>
+    <p><strong>Email:</strong> {{ userEmail }}</p>
+    <p><strong>Nombre:</strong> {{ userName }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ userBirthdate }}</p>
+    <p><strong>Género:</strong> {{ userGender }}</p>
+  </div>
+
+  <div class="actions">
+    <h2>Acciones</h2>
+    <ion-button expand="block" color="primary" (click)="userLogout()">
+      Cerrar Sesión
+    </ion-button>
+    <ion-button expand="block" color="danger" (click)="userDelete()">
+      Eliminar Cuenta
+    </ion-button>
+  </div>
 </ion-content>
