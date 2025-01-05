@@ -1,18 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonText, IonItem, IonNote, IonLabel, IonCard, IonCardContent, IonButton } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { ApiServiceService } from '../Services/api-service.service';
 import { Router, RouterModule } from '@angular/router';
 import { LocalStorageService } from '../Services/local-storage.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.page.html',
   styleUrls: ['./user-login.page.scss'],
   standalone: true,
-  imports: [IonButton, IonCardContent, IonCard, IonLabel, IonNote, IonItem, IonText, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule,RouterModule]
+  imports: [IonicModule,CommonModule, FormsModule, ReactiveFormsModule,RouterModule]
 })
 export class UserLoginPage {
 
